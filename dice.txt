@@ -1,0 +1,236 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Dice App",
+      home: homePage(),
+    ),
+  );
+}
+
+class homePage extends StatefulWidget {
+  const homePage({Key? key}) : super(key: key);
+  @override
+ v  _homePageState createState() => _homePageState();
+}
+
+class _homePageState extends State<homePage> {
+  int num1 = 1;
+  int num2 = 1;
+  int num3 = 1;
+  int num4 = 1;
+  int pls1 = 0;
+  int pls2 = 0;
+  int pls3 = 0;
+  int pls4 = 0;
+  var tracker1 = 0;
+  var tracker2 = 0;
+  var tracker3 = 0;
+  var tracker4 = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.green,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: Text(
+                    "Player 1",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 160),
+                  child: Text(
+                    "Player 2",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 0),
+                  child: Text(
+                    "Times Rolled = $tracker1",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 95, top: 0),
+                  child: Text(
+                    "Times Rolled = $tracker2",
+                    textAlign: TextAlign.right,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (tracker1 <= 9) {
+                        num1 = Random().nextInt(6) + 1;
+                        pls1 += num1;
+                        tracker1++;
+                      }
+                    });
+                  },
+                  child: Image.asset(
+                    "images/dice$num1.png",
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
+                const SizedBox(
+                  width: 100,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (tracker2 <= 9) {
+                        num2 = Random().nextInt(6) + 1;
+                        pls2 += num2;
+                        tracker2++;
+                      }
+                    });
+                  },
+                  child: Image.asset(
+                    "images/dice$num2.png",
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, top: 0),
+                  child: Text(
+                    "Times Rolled = $tracker3",
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 95, top: 0),
+                  child: Text(
+                    "Times Rolled = $tracker4",
+                    textAlign: TextAlign.right,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {if (tracker3 <= 9) {
+                      num3 = Random().nextInt(6) + 1;
+                      pls3 += num3;
+                      tracker3++;
+                    }
+                    });
+                  },
+                  child: Image.asset(
+                    "images/dice$num3.png",
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
+                const SizedBox(
+                  width: 100,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (tracker4 <= 9) {
+                      num4 = Random().nextInt(6) + 1;
+                      pls4 += num4;
+                      tracker4++;
+                    }
+                    });
+                  },
+                  child: Image.asset(
+                    "images/dice$num4.png",
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: Text(
+                    "Player 3",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 160),
+                  child: Text(
+                    "Player 4",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  ),
+                )
+              ],
+
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text(
+                    'Scorecard:',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 24,
+                      backgroundColor: Colors.white10,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Text("Player 1 score: $pls1"),
+            Text("Player 2 score: $pls2"),
+            Text("Player 3 score: $pls3"),
+            Text("Player 4 score: $pls4"),
+          ],
+        ),
+      ),
+    );
+  }
+}
